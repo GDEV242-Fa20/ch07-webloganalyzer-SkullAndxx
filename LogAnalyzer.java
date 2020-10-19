@@ -116,12 +116,28 @@ public class LogAnalyzer
      * Exercise 7.16
      * @return qiuetest hour
      */
-    public int qiuetestHour(){
-    
+    public void qiuetestHour(){
        int qiuetestHour = 0;
-        
+       
+        for(int h : hourCounts){
+           if(h > qiuetestHour){
+              qiuetestHour = h;
+           } 
+        }
+       
+       int hour = 0;
+       
+       for(int index = 0; index < hourCounts.length; index++){
+           if(hourCounts[index] != 0){
+               
+               if(hourCounts[index] < qiuetestHour){
+                   qiuetestHour = hourCounts[index];
+                   hour = index;
+               }           
+           }
 
-        return qiuetestHour;
+       }
+       System.out.println(hour + " : " + qiuetestHour);
     }      
       
 }
