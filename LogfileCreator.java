@@ -58,7 +58,7 @@ public class LogfileCreator
      */
     public LogEntry createEntry()
     {
-        int year = getRandomNumber(2015,2019);
+        int year = getRandomNumber(2015,2020);
         int month = 1 + rand.nextInt(12);
         // Avoid the complexities of days-per-month.
         int day = 1 + rand.nextInt(28);
@@ -72,7 +72,7 @@ public class LogfileCreator
      * @param Starting date and ending date
      * @return return a random number between 2015-2019
      */
-    public int getRandomNumber(int min, int max) {
+    private int getRandomNumber(int min, int max) {
         return (int) ((Math.random()*(max-min))+min);
     }
 }
