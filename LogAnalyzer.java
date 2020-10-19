@@ -19,6 +19,7 @@
         private int[] yearlyCounts;
         // Use a LogfileReader to access the data.
         private LogfileReader reader;
+        private int totalRows = 0;
     
         /**
          * Create an object to analyze hourly web accesses.
@@ -30,7 +31,7 @@
             hourCounts = new int[24];
             dayCounts = new int[7];
             monthCounts = new int[12];
-            yearlyCounts = new int[6];
+            yearlyCounts = new int[10];
             // Create the reader to obtain the data.
             reader = new LogfileReader("demo.log");
         }
@@ -46,7 +47,7 @@
             hourCounts = new int[24];
             dayCounts = new int[7];
             monthCounts = new int[12];
-            yearlyCounts = new int[6];
+            yearlyCounts = new int[10];
             // Create the reader to obtain the data.
             reader = new LogfileReader(filename);
             //reader = new LogfileReader("demo.log");
@@ -63,12 +64,12 @@
                 int hour = entry.getHour();
                 int month = entry.getMonth()-1;
                 int day = entry.getDay()-1;
-                //day = day % 7;
                 int year = entry.getYear();
                 
                 hourCounts[hour]++;
                 dayCounts[day]++;
                 monthCounts[month]++;
+                totalRows++;
                 //yearlyCounts[year]++;
             }
         }
@@ -125,13 +126,13 @@
          */
         public int numberOfAccesses(){
         
-            int total = 0;
+            // int total = 0;
             
-            while(reader.hasNext()) {
-                LogEntry entry = reader.next();
-                total++;
-            }
-            return total;
+            // while(reader.hasNext()) {
+                // LogEntry entry = reader.next();
+                // total++;
+            // }
+            return totalRows;
         }
         /**
          * Find the busiest hour in 24 hours
@@ -203,8 +204,9 @@
            int hour = 0;
     
            //minus 1 helps keep everything inbounds during run
-           for(int index = 0; index < hourCounts.length-1; index++){
-               if(hourCounts[index+1] < hourCounts.length){
+           for(int index = 0; index < hourCounts.length; index++){
+               
+               if(index+1 < hourCounts.length){
                    //lock in sum of indexes
                    int num1 = hourCounts[index] + hourCounts[index+1];
                    //compare sum to previously saved sum
