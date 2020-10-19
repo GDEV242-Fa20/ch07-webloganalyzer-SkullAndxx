@@ -104,13 +104,13 @@ public class LogAnalyzer
            // } 
        // }
        for(int index = 0; index < hourCounts.length; index++){
-           if(hourCounts[index] >= busiestHour){
+           if(hourCounts[index] > busiestHour){
                busiestHour = hourCounts[index];
                hour = index;
-               System.out.println(hour + " : " + busiestHour);
+               //System.out.println(hour + " : " + busiestHour);
            }
        }
-       //System.out.println(hour + " : " + busiestHour);
+       System.out.println(hour + " : " + busiestHour);
     }
     /**
      * Find the least busy hour in 24 hours
@@ -146,5 +146,32 @@ public class LogAnalyzer
  
        //System.out.println(hour + " : " + qiuetestHour);
     }      
-      
+    /**
+     * Find a 2 hour block that is the busiest
+     * Exercise 7.18
+     * @return The highest number in a 2 hour block
+     */
+    public void busiest2Hours(){
+    
+       int busiestHour = 0;
+       int hour = 0;
+
+       //minus 1 helps keep everything inbounds during run
+       for(int index = 0; index < hourCounts.length-1; index++){
+           if(hourCounts[index+1] < hourCounts.length){
+               //lock in sum of indexes
+               int num1 = hourCounts[index] + hourCounts[index+1];
+               //compare sum to previously saved sum
+               if(num1 > busiestHour){
+                   //set new sum and save current index
+                   busiestHour = num1;
+                   hour = index;
+                   //System.out.println(hour + " : " + busiestHour);
+               } 
+               
+           }
+       }
+       System.out.println(hour + " : " + busiestHour);
+    }      
+ 
 }
