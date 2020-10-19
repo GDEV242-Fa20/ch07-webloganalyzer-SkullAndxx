@@ -27,7 +27,7 @@ public class LogAnalyzer
     }
     /**
      * Create an object to analyze hourly web accesses.
-     * 
+     * Exercise 7.12
      * @param enter the name of the file to query
      */
     public LogAnalyzer(String filename)
@@ -74,9 +74,9 @@ public class LogAnalyzer
     }
     /**
      * Count the total number of records in the file
-     * 
+     * Exercise 7.14
      *  @return total number of records
-       */
+     */
     public int numberOfAccesses(){
     
         int total = 0;
@@ -87,4 +87,41 @@ public class LogAnalyzer
         }
         return total;
     }
+    /**
+     * Find the busiest hour in 24 hours
+     * Exercise 7.15
+     * @return Highest number hour
+     */
+    public void busiestHour(){
+    
+       int busiestHour = 0;
+       int hour = 0;
+       
+       //for each will not give index
+       // for(int hour : hourCounts){
+           // if(hour > busiestHour){
+               // busiestHour = hour;
+           // } 
+       // }
+       for(int index = 0; index < hourCounts.length; index++){
+           if(hourCounts[index] > busiestHour){
+               busiestHour = hourCounts[index];
+               hour = index;
+           }
+       }
+       System.out.println(hour + " : " + busiestHour);
+    }
+    /**
+     * Find the least busy hour in 24 hours
+     * Exercise 7.16
+     * @return qiuetest hour
+     */
+    public int qiuetestHour(){
+    
+       int qiuetestHour = 0;
+        
+
+        return qiuetestHour;
+    }      
+      
 }
