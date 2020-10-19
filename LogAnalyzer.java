@@ -104,12 +104,13 @@ public class LogAnalyzer
            // } 
        // }
        for(int index = 0; index < hourCounts.length; index++){
-           if(hourCounts[index] > busiestHour){
+           if(hourCounts[index] >= busiestHour){
                busiestHour = hourCounts[index];
                hour = index;
+               System.out.println(hour + " : " + busiestHour);
            }
        }
-       System.out.println(hour + " : " + busiestHour);
+       //System.out.println(hour + " : " + busiestHour);
     }
     /**
      * Find the least busy hour in 24 hours
@@ -119,25 +120,31 @@ public class LogAnalyzer
     public void qiuetestHour(){
        int qiuetestHour = 0;
        
-        for(int h : hourCounts){
+       //This allows me to get the busiest time to use as my max value
+       for(int h : hourCounts){
            if(h > qiuetestHour){
               qiuetestHour = h;
            } 
-        }
+       }
        
        int hour = 0;
        
+       
        for(int index = 0; index < hourCounts.length; index++){
+           //make sure 0 is not used.
            if(hourCounts[index] != 0){
-               
-               if(hourCounts[index] < qiuetestHour){
+               //thanks to the max value of qiuetestHour I can now 
+               //compare accordingly because it is not 0
+               if(hourCounts[index] <= qiuetestHour){
                    qiuetestHour = hourCounts[index];
                    hour = index;
+                   System.out.println(hour + " : " + qiuetestHour);
                }           
            }
 
        }
-       System.out.println(hour + " : " + qiuetestHour);
+ 
+       //System.out.println(hour + " : " + qiuetestHour);
     }      
       
 }
