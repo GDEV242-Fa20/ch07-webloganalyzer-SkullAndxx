@@ -40,6 +40,7 @@ public class LogfileReader implements Iterator<LogEntry>
     /**
      * Create a LogfileReader that will supply data
      * from a particular log file. 
+     * 
      * @param filename The file of log data.
      */
     public LogfileReader(String filename)
