@@ -72,4 +72,19 @@ public class LogAnalyzer
     {
         reader.printData();
     }
+    /**
+     * Count the total number of records in the file
+     * 
+     *  @return total number of records
+       */
+    public int numberOfAccesses(){
+    
+        int total = 0;
+        
+        while(reader.hasNext()) {
+            LogEntry entry = reader.next();
+            total++;
+        }
+        return total;
+    }
 }
