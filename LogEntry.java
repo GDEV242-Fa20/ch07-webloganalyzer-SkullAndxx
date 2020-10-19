@@ -6,8 +6,8 @@ import java.util.Calendar;
  * Individual fields are made available via
  * accessors such as getHour() and getMinute().
  * 
- * @author David J. Barnes and Michael Kölling.
- * @version    2016.02.29
+ * @author Erick Rubio
+ * @version    2020.10.19
  */
 public class LogEntry implements Comparable<LogEntry>
 {
@@ -80,6 +80,36 @@ public class LogEntry implements Comparable<LogEntry>
     {
         return dataValues[MINUTE];
     }
+    
+    /**
+     * Return the day.
+     * @return The day field from the log line.
+     */
+    public int getDay()
+    {
+        //Calendar c = Calendar.getInstance();
+        int day = when.get(Calendar.DAY_OF_WEEK);
+        return day;
+    }
+
+     /**
+     * Return the month.
+     * @return The month field from the log line.
+     */
+    public int getMonth()
+    {
+        return dataValues[MONTH];
+    }
+    
+     /**
+     * Return the year.
+     * @return The year field from the log line.
+     */
+    public int getYear()
+    {
+        int year = when.get(Calendar.YEAR);
+        return year;
+    }    
     
     /**
      * Create a string representation of the data.
